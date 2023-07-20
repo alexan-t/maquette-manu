@@ -1,0 +1,66 @@
+.container,
+.container-fluid,
+.container-md,
+.container-sm,
+.container-lg,
+.container-xxl {
+    width: 100%;
+    padding-right: calc(var(--gutter-x) * 0.5);
+    padding-left: calc(var(--gutter-x) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    max-width: var(--container);
+}
+.container-lg {
+    max-width: var(--container-lg);
+}
+.container-md {
+    max-width: var(--container-md);
+}
+.container-sm {
+    max-width: var(--container-sm);
+}
+
+.cms {
+    > *,
+    .wp-block-group__inner-container {
+        width: 100%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: var(--container);
+        &:not(.row) {
+            padding-right: calc(var(--gutter-x) * 0.5);
+            padding-left: calc(var(--gutter-x) * 0.5);
+        }
+
+        &.alignwide,
+        .alignwide {
+            max-width: var(--container-lg);
+            .wp-block-group__inner-container {
+                max-width: var(--container-lg);
+            }
+        }
+
+        &.alignshort,
+        .alignshort,
+        &.container-sm {
+            max-width: var(--container-sm);
+        }
+
+        &.alignmedium,
+        .alignmedium,
+        &.container-md {
+            max-width: var(--container-md);
+        }
+
+        &.alignfull {
+            max-width: 1000%;
+            overflow: hidden;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}

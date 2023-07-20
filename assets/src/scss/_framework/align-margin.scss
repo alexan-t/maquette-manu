@@ -1,0 +1,72 @@
+@for $i from 1 through 5 {
+    .mt-#{$i} {
+        margin-top: $i + rem !important;
+    }
+    .mb-#{$i} {
+        margin-bottom: $i + rem !important;
+    }
+    .my-#{$i} {
+        margin-top: $i + rem;
+        margin-bottom: $i + rem;
+    }
+    .mx-#{$i} {
+        margin-left: $i + rem;
+        margin-right: $i + rem;
+    }
+    .p-#{$i} {
+        padding: $i + rem;
+    }
+    .pt-#{$i} {
+        padding-top: $i + rem;
+    }
+    .pb-#{$i} {
+        padding-bottom: $i + rem;
+    }
+    .py-#{$i} {
+        padding-top: $i + rem;
+        padding-bottom: $i + rem;
+    }
+    .px-#{$i} {
+        padding-left: $i + rem;
+        padding-right: $i + rem;
+    }
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.mt-base {
+    margin-top: var(--m-base);
+}
+.mt-lg {
+    margin-top: var(--m-large);
+}
+
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+.align-items-end {
+    align-items: flex-end !important;
+}
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.p-relative {
+    position: relative;
+}

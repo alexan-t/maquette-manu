@@ -1,0 +1,259 @@
+// center vertically and/or horizontally an absolute positioned element
+@mixin center($xy: xy) {
+    @if $xy == xy {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    } @else if $xy == x {
+        left: 50%;
+        transform: translateX(-50%);
+    } @else if $xy == y {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@mixin overlay($bg-color: null, $gradient-color: null) {
+    content: "";
+    background-color: $bg-color;
+    background-image: $gradient-color;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+// backgrounds
+@mixin bg($url, $position: 0 0, $no-repeat: true) {
+    background-image: url($url);
+    background-position: $position;
+
+    @if $no-repeat == true {
+        background-repeat: no-repeat;
+    }
+}
+// utilisation
+// @include bg('image.jpg') -> no-repeat
+// @include bg('image.jpg', false) -> repeat
+
+@mixin bg-cover($position: center) {
+    background-position: $position;
+    background-size: cover;
+}
+
+@mixin bg-contain($position: center) {
+    background-position: $position;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin bg-multiple($url-1, $url-2, $position-1, $position-2) {
+    background-image: url($url-1), url($url-2);
+    background-position: $position-1, $position-2;
+    background-repeat: no-repeat;
+}
+
+// ratios
+@mixin ratio($ratio, $background: false) {
+    @if $background {
+        // juste image de background
+        padding-top: percentage($ratio); // 9/16 par ex.
+        @include bg-cover();
+    } @else {
+        // contenu img ou autre
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            padding-top: percentage($ratio); // 9/16 par ex.
+            content: "";
+            display: block;
+        }
+    }
+}
+
+@mixin ratio-item($object-fit: false) {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @if $object-fit {
+        object-fit: cover;
+    }
+}
+
+// pseudo content
+@mixin pseudo-content($width: null, $height: null, $bg: null) {
+    // null = arguments optionnels
+    content: "";
+    background-color: $bg;
+    width: $width;
+    height: $height;
+    position: absolute;
+}
+
+// éléments contenu centré
+@mixin centered-item($size: null, $bg-color: null, $rounded: false, $inline: false) {
+    background-color: $bg-color;
+    width: $size;
+    height: $size;
+    align-items: center;
+    justify-content: center;
+
+    @if $rounded {
+        border-radius: 50%;
+    }
+
+    @if $inline {
+        display: inline-flex;
+    } @else {
+        display: flex;
+    }
+}
+
+// images centrées dans conteneur
+@mixin centered-image($size: 100%) {
+    max-width: $size;
+    max-height: $size;
+    width: auto;
+    height: auto;
+    position: absolute;
+    @include center(xy);
+}
+
+// lien underline + focus box-shadow
+@mixin link-style($color) {
+    text-decoration: underline;
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px $color;
+    }
+}
+
+@mixin flex($center: null) {
+    display: flex;
+    flex-wrap: wrap;
+    @if $center {
+        align-items: $center;
+    }
+    @if $center == centerall {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@mixin isnav($py: 0.75em, $px: 0.5rem) {
+    @include flex;
+    a {
+        &:not(.btn) {
+            padding: $py $px;
+        }
+        display: inline-block;
+    }
+    margin-bottom: 0.2rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+@mixin list-unstyled() {
+    list-style: none;
+    padding-left: 0;
+}
+
+@mixin margin-x-auto() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin has-color-inverted() {
+    color: var(--color-inverted);
+    a:not(.btn) {
+        color: var(--color-inverted);
+        &:hover {
+            color: var(--color-tertiary);
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        color: var(--color-inverted);
+    }
+
+    svg {
+        fill: var(--color-inverted) !important;
+    }
+}
+
+@mixin has-color($color: base) {
+    color: $color;
+    a:not(.btn) {
+        color: $color;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    strong {
+        color: $color;
+    }
+
+    svg {
+        fill: $color !important;
+    }
+}
+
+// stylelint-disable property-disallowed-list
+@mixin transition($transition...) {
+    @if length($transition) == 0 {
+        $transition: $transition-base;
+    }
+
+    @if length($transition) > 1 {
+        @each $value in $transition {
+            @if $value == null or $value == none {
+                @warn "The keyword 'none' or 'null' must be used as a single argument.";
+            }
+        }
+    }
+
+    @if nth($transition, 1) != null {
+        transition: $transition;
+    }
+}
+
+@mixin transform($transforms...) {
+    -webkit-transform: $transforms;
+    -ms-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin transform-origin($origin...) {
+    -webkit-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+@mixin transition($transitions...) {
+    -webkit-transition: $transitions;
+    -ms-transition: $transitions;
+    transition: $transitions;
+}
+
+@mixin transition-delay($delay...) {
+    -webkit-transition-delay: $delay;
+    -ms-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+// transition pour les transforms
+@mixin transition-transform($transition...) {
+    -webkit-transition: -webkit-transform $transition;
+    transition: transform $transition;
+}

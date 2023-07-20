@@ -1,0 +1,125 @@
+// colors
+$color-base: #dd755d;
+$color-base-light: #ffffff;
+$color-base-shade: #000000;
+$color-white: #fff;
+$color-primary: #0c56a9;
+$color-secondary: #333333;
+$color-gray-100: #abf7ff;
+$color-gray-200: #ccced5;
+$color-gray-300: #bbb;
+$color-gray-400: #8d8f96;
+
+$theme-colors: (
+    light: $color-white,
+    base: $color-base,
+    base-shade: $color-base-shade,
+    primary: $color-primary,
+    secondary: $color-secondary,
+    gray-100: $color-gray-100,
+    gray-200: $color-gray-200,
+    gray-300: $color-gray-300,
+    gray-400: $color-gray-400
+);
+
+:root {
+    @each $color, $value in $theme-colors {
+        --color-#{$color}: #{$value};
+    }
+    --color-white: #fff;
+    --color-inverted: #fff;
+    --line-height: 1.5;
+    --line-height-xs: 0.75;
+    --line-height-sm: 1;
+    --line-height-md: 1.25;
+    --line-height-lg: 1.55;
+    --line-height-xl: 1.75;
+    --font-size-2xs: 0.625rem;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-1xl: 1.875rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.5rem;
+    --font-size-7xl: 4rem;
+    --font-size-8xl: 5rem;
+    --font-size-9xl: 7.5rem;
+    --font-size-10xl: 10rem;
+    --font-base: "Montserrat", sans-serif;
+    --font-serif: "Montserrat", sans-serif;
+    --font-cond: oswald, serif;
+    --radius-lg: 32px;
+    --radius: 16px;
+    --container-lg: 1200px;
+    --container: 1100px;
+    --container-md: 800px;
+    --container-sm: 600px;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-base: 1rem;
+    --space-md: 2rem;
+    --space-lg: 3rem;
+    --space-xl: 4rem;
+    --space-1xl: 5rem;
+    --space-2xl: 5rem;
+    --gutter-x: 1.5rem;
+    --gutter-y: 1.5rem;
+}
+
+$variable-prefix: cn- !default;
+
+$aspect-ratios: (
+    "1x1": 100%,
+    "4x3": calc(3 / 4 * 100%),
+    // horizontal
+    "3x4": calc(4 / 3.7 * 100%),
+    // vertical
+    "3x2": calc(2 / 3 * 100%),
+    // horizontal
+    "2x3": calc(3 / 2 * 100%),
+    // vertical
+    "16x9": calc(9 / 16 * 100%),
+    "21x9": calc(9 / 21 * 100%),
+    // vertical
+    "9x21": calc(21 / 9 * 100%)
+);
+
+// tailles icones (basées sur icones en 512x512)
+$icon-sizes: (
+    "xxs": 0.5rem,
+    // 8px
+    "xs": 0.75rem,
+    // 12px
+    "sm": 0.875rem,
+    // 14px
+    "lg": 1.125rem,
+    // 18px
+    "xl": 1.25rem,
+    // 20px
+    "xxl": 1.5rem,
+    // 24px
+    "2x": 2rem,
+    // 32px
+    "3x": 3rem // 48px,,,,,,,,,,,,,,,
+);
+
+$icon-width: (
+    // icones qui font plus ou moins de 512px de large
+    "6": 0.375em,
+    // largeur 6px
+    "10": 0.625em,
+    // largeur 10px
+    "12": 0.75em,
+    // largeur 12px
+    "14": 0.875em,
+    // largeur 14px
+    "18": 1.125em,
+    // largeur 18px
+    "20": 1.25em // largeur 20px
+);

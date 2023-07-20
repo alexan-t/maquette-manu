@@ -1,0 +1,130 @@
+a {
+    color: var(--color-light);
+    text-decoration: none;
+    @include transition(color 0.3s, background-color 0.3s, border-color 0.3s);
+}
+
+// LISTE ROW
+ul.list-unstyled {
+    @include list-unstyled();
+}
+
+ul.list-inline {
+    @include list-unstyled();
+    display: flex;
+    li:not(:nth-child(1)) {
+        padding: 0rem 0.5rem;
+    }
+    li:nth-child(1) {
+        padding-right: 0.5rem;
+    }
+}
+
+ul.row,
+ol.row {
+    @include list-unstyled();
+    margin-bottom: 0;
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+.skip-link:focus {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    margin-top: -99px;
+    z-index: 9999999;
+    background: var(--color-secondary);
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    text-decoration: none;
+}
+
+//// types
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+    margin-block-start: 0;
+    margin-block-end: var(--space-base);
+    line-height: var(--line-height-md);
+    font-weight: bold;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: var(--space-base);
+    line-height: var(--line-height-xl);
+}
+
+.h1,
+h1 {
+    //font-size: calc(var(--font-size-1xl) + 1.5vw);
+    font-size: var(--font-size-4xl);
+}
+.h2,
+h2 {
+    //font-size: calc(var(--font-size-1xl) + .75vw);
+    font-size: var(--font-size-1xl);
+}
+.h3,
+h3 {
+    //font-size: calc(var(--font-size-xl) + .5vw);
+    font-size: var(--font-size-xl);
+}
+.h4,
+h4 {
+    font-size: calc(var(--font-size-md) + 0.35vw);
+}
+.h5,
+h5 {
+    font-size: calc(var(--font-size-md) + 0.15vw);
+}
+.h6,
+h6 {
+    font-size: var(--font-size-base);
+}
+
+.lead {
+    font-size: var(--font-size-lg);
+}
+
+small {
+    font-size: var(--font-size-sm);
+}

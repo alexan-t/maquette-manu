@@ -1,0 +1,87 @@
+.footer {
+    background-color: var(--color-base-shade);
+    h2,
+    p,
+    .btn-more-text {
+        color: var(--color-light);
+        padding: 1rem 0;
+    }
+    hr {
+        margin: 3rem 0;
+    }
+    .footer-links-list {
+        display: flex;
+        justify-content: space-between;
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            align-items: center;
+        }
+        a,
+        p {
+            font-weight: 100;
+            padding: 0.5rem 0 0 0;
+            margin: 0;
+            font-size: clamp(0.9rem, 2.5cqw, 1rem);
+            @include media-breakpoint-down(sm) {
+                padding: 1.5rem 0 0 0;
+            }
+        }
+        .infos-links {
+            display: flex;
+            flex-direction: column;
+            @include media-breakpoint-down(sm) {
+                align-items: center;
+                text-align: center;
+            }
+            .infos-adress {
+                padding: 0;
+                transition: 0.05s;
+                &:hover {
+                    p {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+        }
+        .footer-menu-links {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            @include media-breakpoint-down(sm) {
+                padding: 3rem 0;
+            }
+        }
+        .footer-reseaux-link {
+            justify-content: end;
+            display: flex;
+            gap: 30px;
+            .icon-xl {
+                height: 2rem;
+                width: 2rem;
+            }
+            @include media-breakpoint-down(sm) {
+                padding-bottom: 2rem;
+            }
+        }
+    }
+    .footer-bottom-links {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            align-items: center;
+        }
+        a:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            @include media-breakpoint-down(sm) {
+                padding: 2rem 0;
+            }
+        }
+        a:nth-child(3) {
+            display: flex;
+            justify-content: end;
+        }
+    }
+}
